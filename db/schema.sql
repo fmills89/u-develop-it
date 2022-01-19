@@ -4,3 +4,10 @@ CREATE TABLE candidates (
     last_name VARCHAR(30) NOT NULL,
     industry_connected BOOLEAN NOT NULL
 );
+
+create table parties (
+    id integer AUTO_INCREMENT PRIMARY KEY,
+    name varchar(50) not null,
+    description text
+);
+
