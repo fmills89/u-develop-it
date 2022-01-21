@@ -1,3 +1,4 @@
+drop table if exists votes;
 DROP TABLE IF EXISTS candidates;
 DROP TABLE IF EXISTS parties;
 drop table if exists voters;
@@ -25,5 +26,13 @@ create table voters (
   created_at datetime default current_timestamp
 );
 
+create table votes (
+  id integer AUTO_INCREMENT PRIMARY KEY,
+  voter_id integer not null,
+  candidate_id integer not null,
+  created_at datetime default current_timestamp,
+  CONSTRAINT uc_voter unique (voter_id),
+  CONSTRAINT fk_voter FOREIGN KEY (voter_id) REFERENCES voters(id) on delete cascade,
+  CONSTRAINT fk_candidate FOREIGN KEY (candidate_id) REFERENCES candidates(id) on delete cascade
+);
 
-    
